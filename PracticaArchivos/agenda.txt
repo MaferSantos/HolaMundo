@@ -1,0 +1,4 @@
+mafer,1111,mafer@gmail.mx
+juan,3333,juan@gmail.com
+luisa,333,luis@gmaiñ.com
+caro,3333,care@gmailcom
