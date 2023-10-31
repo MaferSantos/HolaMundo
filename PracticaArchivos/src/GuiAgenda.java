@@ -146,6 +146,37 @@ public class GuiAgenda extends JFrame {
 			}
 				
 			}
+
+			JList list_1 = new JList();
+		list_1.setBounds(231, 71, 174, 106);
+		contentPane.add(list_1);
+	
+		
+		JButton btnNewButton_1 = new JButton("mostrar todo");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DefaultListModel modelo = new DefaultListModel();
+				list_1.setModel(modelo);
+				try {
+					BufferedReader in = new BufferedReader(new FileReader("agenda.txt"));
+					String linea = in.readLine();
+					while(linea!=null) {
+						int indexComaUno = linea.indexOf(",",1);
+						int indexComaDos = linea.indexOf(",",indexComaUno+1);
+						String nombre = linea.substring(0,indexComaUno);
+						String tel = linea.substring(indexComaUno+1,indexComaDos);
+						String correo = linea.substring(indexComaDos+1, linea.length());
+						modelo.addElement(nombre + "," + tel + "," + correo);
+						linea = in.readLine();
+						
+					
+					}
+					in.close();
+				} catch (IOException e2) {
+				JOptionPane.showMessageDialog(btnNewButtonBuscar, "No encontré");
+				}
+			}
+			
 		});
 		btnNewButtonBuscar.setBounds(208, 310, 89, 23);
 		contentPane.add(btnNewButtonBuscar);
